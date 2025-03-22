@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفاجأة العيد</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F5DEB3;
+            text-align: center;
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: translateX(-100%);
+            animation: slide-in 1s ease-out forwards;
+            position: relative;
+        }
+        @keyframes slide-in {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .message {
+            font-size: 50px;
+            font-weight: bold;
+            color: #D4AF37;
+            animation: fade-in 2s ease-in-out;
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: gold;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message" id="greeting-message">🎉 عيدكم مبارك! 🎊</div>
+        <div class="message" id="gift-amount">💰 عيديتك 0 ريال! 💰</div>
+    </div>
+    <script>
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                document.body.appendChild(confetti);
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                confetti.style.backgroundColor = ['#FFD700', '#FF4500', '#32CD32', '#1E90FF'][Math.floor(Math.random() * 4)];
+                confetti.style.width = confetti.style.height = Math.random() * 10 + 5 + 'px';
+            }
+        }
+        function setRandomAmount() {
+            let randomAmount = Math.floor(Math.random() * 51);
+            document.getElementById("gift-amount").innerHTML = `💰 عيديتك ${randomAmount} ريال! 💰`;
+        }
+        function setRandomGreeting() {
+            let greetings = [
+                "🎉 عيدكم مبارك، وفرحتكم دائمة! 🎊",
+                "✨ كل عام وأنتم بخير، أعاده الله عليكم بالسعادة! 🌙",
+                "🌸 عيد سعيد مليء بالمحبة والفرح! 💖",
+                "🥳 تقبل الله طاعاتكم وجعل عيدكم بهجة وسرور! 🎶",
+                "🎁 عساكم من عواده، وأيامكم كلها أعياد! 💎"
+            ];
+            let randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            document.getElementById("greeting-message").innerHTML = randomGreeting;
+        }
+        createConfetti();
+        setRandomAmount();
+        setRandomGreeting();
+    </script>
+</body>
+</html>
