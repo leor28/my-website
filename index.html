@@ -89,10 +89,22 @@
 
         .reaction {
             margin: 20px 0; /* Space between reaction images */
+            animation: fade-in 2s ease-in-out; /* Add fade-in effect to the reaction image */
         }
         .reaction img {
-            width: 100px; /* Adjust size of the image (increased size) */
-            height: 100px;
+            width: 200px; /* Adjust size of the image (increased size) */
+            height: 150px;
+            opacity: 0;
+            animation: fade-in-img 2s ease-in-out forwards; /* Fade-in effect for the image */
+        }
+
+        @keyframes fade-in-img {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -102,7 +114,7 @@
         
         <!-- Single Reaction Image -->
         <div class="reaction">
-            <img src="https://i.pinimg.com/originals/c2/96/12/c296120e7b93c7f9a3b1a0b1586e466f.png" alt="Reaction">
+            <img src="https://i.pinimg.com/736x/51/55/e4/5155e4170802d50f301e98c5399af2da.jpg" alt="Reaction">
         </div>
 
         <div class="message" id="gift-amount">💰 عيديتك 0 ريال! 💰</div>
